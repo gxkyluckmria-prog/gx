@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Registration - Finance Portal</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background: url('mn.png');
+             background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            width: 400px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input {
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-container span {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            cursor: pointer;
+            color: #555;
+            user-select: none;
+        }
+
+        button {
+            padding: 12px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 6px;
+            background: #28a745;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        .toggle {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .toggle span {
+            color: #007bff;
+            cursor: pointer;
+        }
+
+        .message {
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .message.error {
+            color: red;
+        }
+
+        .message.success {
+            color: green;
+        }
+
+        /* Hide the registration form initially */
+        #registerForm {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Login Form -->
+        <form id="loginForm"action="bod.html"method="get">
+            <h2>Login</h2>
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="loginPassword" placeholder="Password" required>
+                <span id="toggleLoginPassword">Show</span>
+            </div>
+            <button type="submit">log in</button>
+            <div class="toggle">Don't have an account? <span id="showRegister">Register</span></div>
+            <div class="message" id="loginMessage".href='bod.html'></div>
+        </form>
+
+        <!-- Registration Form -->
+        <form id="registerForm">
+            <h2>Register</h2>
+            <input type="text" id="regName" placeholder="Full Name" required>
+            <input type="email" id="regEmail" placeholder="Email" required>
+            <div class="password-container">
+                <input type="password" id="regPassword" placeholder="Password (min 6 chars)" required>
+                <span id="toggleRegPassword">Show</span>
+            </div>
+            <button type="submit">Register</button>
+            <div class="toggle">Already have an account? <span id="showLogin">Login</span></div>
+            <div class="message" id="regMessage"></div>
+        </form>
+    </div>
+
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const registerForm = document.getElementById('registerForm');
+        const showRegister = document.getElementById('showRegister');
+        const showLogin = document.getElementById('showLogin');
+        const loginMessage = document.getElementById('loginMessage');
+        const regMessage = document.getElementById('regMessage');
+
+        const toggleLoginPassword = document.getElementById('toggleLoginPassword');
+        const toggleRegPassword = document.getElementById('toggleRegPassword');
+        const loginPasswordInput = document.getElementById('loginPassword');
+        const regPasswordInput = document.getElementById('regPassword');
+
+        // Toggle forms
+        showRegister.addEventListener('click', () => {
+            loginForm.style.display = 'none';
+            registerForm.style.display = 'flex';
+            loginMessage.textContent = '';
+        });
+
+        showLogin.addEventListener('click', () => {
+            registerForm.style.display = 'none';
+            loginForm.style.display = 'flex';
+            regMessage.textContent = '';
+        });
+
+        // Password toggle
+        toggleLoginPassword.addEventListener('click', () => {
+            if (loginPasswordInput.type === "password") {
+                loginPasswordInput.type = "text";
+                toggleLoginPassword.textContent = "Hide";
+            } else {
+                loginPasswordInput.type = "password";
+                toggleLoginPassword.textContent = "Show";
+            }
+        });
+
+        toggleRegPassword.addEventListener('click', () => {
+            if (regPasswordInput.type === "password") {
+                regPasswordInput.type = "text";
+                toggleRegPassword.textContent = "Hide";
+            } else {
+                regPasswordInput.type = "password";
+                toggleRegPassword.textContent = "Show";
+            }
+        });
+
+        // Helper functions
+        function validateEmail(email) {
+            const re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('users') || '[]');
+        }
+
+        function saveUser(user) {
+            const users = getUsers();
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+        }
+
+        // Registration Form Submission
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('regName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value.trim();
+
+            if (!validateEmail(email)) {
+                regMessage.textContent = 'Invalid email format';
+                regMessage.className = 'message error';
+                return;
+            }
+
+            if (password.length < 6) {
+                regMessage.textContent = 'Password must be at least 6 characters';
+                regMessage.className = 'message error';
+                return;
+            }
+
+            const users = getUsers();
+            if (users.some(u => u.email === email)) {
+                regMessage.textContent = 'Email already registered';
+                regMessage.className = 'message error';
+                return;
+            }
+
+            saveUser({ name, email, password });
+            regMessage.textContent = `Registration successful for ${name}`;
+            regMessage.className = 'message success';
+            registerForm.reset();
+        });
+
+        // Login Form Submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value.trim();
+
+            const users = getUsers();
+            const user = users.find(u => u.email === email && u.password === password);
+
+            if (user) {
+                loginMessage.textContent = `Welcome back, ${user.name}!`;
+                loginMessage.className = 'message success';
+                window.location.href = 'bod.html';
+            } else {
+                loginMessage.textContent = 'Invalid email or password';
+                loginMessage.className = 'message error';
+            }
+
+            loginForm.reset();
+        });
+    </script>
+</body>
+</html>

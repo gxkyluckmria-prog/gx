@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MoneyKeeper Promo</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      overflow: hidden;
+    }
+
+    /* SLIDESHOW BACKGROUND */
+    .slideshow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      transition: opacity 2s ease-in-out;
+    }
+
+    .slide.active {
+      opacity: 1;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      z-index: 10;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .logo span {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: #00b894;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00b894;
+    }
+
+    /* OVERLAY CONTENT */
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      animation: fadeInUp 2s ease;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      animation: fadeInUp 3s ease;
+    }
+
+    .btn {
+      margin-top: 2rem;
+      padding: 12px 30px;
+      background: #00b894;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      animation: fadeInUp 4s ease;
+    }
+
+    .btn:hover {
+      background: #019874;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SLIDESHOW BACKGROUND -->
+  <div class="slideshow">
+    <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1600195077073-7c33aa04e7d3?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1607082349566-187342fd8df4?auto=format&fit=crop&w=1600&q=80');"></div>
+    <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1611162616305-c69b3fa7a88e?auto=format&fit=crop&w=1600&q=80');"></div>
+  </div>
+
+  <!-- HEADER WITH LOGO -->
+  <header>
+    <div class="logo">
+      <!-- Replace the image link below with your own logo -->
+      <img src="https://cdn-icons-png.flaticon.com/512/3135/3135706.png" alt="MoneyKeeper Logo">
+      <span>Mamele Bank</span>
+    </div>
+    <nav>
+      <a href="admn.html">admin</a>
+      <a href="page2.html">About</a>
+
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <!-- PROMOTIONAL CONTENT -->
+  <div class="overlay">
+    <h1>MRIA FAMILY WEBSITE</h1>
+    <p>Track, save, and grow your wealth with smart money management — built for your success.</p>
+    <button class="btn" onclick="window.location.href='log.html'">Get Started</button>
+  </div>
+
+  <!-- JAVASCRIPT FOR SLIDES -->
+  <script>
+    let current = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showNextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    setInterval(showNextSlide, 5000); // change every 5 seconds
+  </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add & Save Content</title>
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background: #00b894;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 700px;
+    margin: 40px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    padding: 30px;
+  }
+
+  h2 {
+    text-align: center;
+    color: #00b894;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  input, textarea, button {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+  }
+
+  input:focus, textarea:focus {
+    outline: 2px solid #00b894;
+  }
+
+  button {
+    background: #00b894;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  button:hover {
+    background: #019874;
+  }
+
+  .saved-data {
+    margin-top: 30px;
+  }
+
+  .entry {
+    background: #e8f9f3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .entry h3 {
+    margin: 0;
+    color: #009970;
+  }
+
+  .entry p {
+    margin: 5px 0 0 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>add your name here!!</h1>
+
+
+</header>
+
+<div class="container">
+  <h2>Add New member</h2>
+  <form id="contentForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="number"id="number"placeholder="your phone number"required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" rows="4" placeholder="Your Amount..." required></textarea>
+    <button type="submit">Save Content</button>
+  </form>
+
+  <div class="saved-data" id="savedData">
+    <h2>Saved Entries</h2>
+    <!-- Entries appear here -->
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('contentForm');
+  const savedDataDiv = document.getElementById('savedData');
+
+  // Load saved data from localStorage
+  let entries = JSON.parse(localStorage.getItem('entries')) || [];
+
+  // Display saved entries
+  function displayEntries() {
+    savedDataDiv.innerHTML = '<h2>Saved Entries</h2>';
+    entries.forEach((entry, index) => {
+      const div = document.createElement('div');
+      div.classList.add('entry');
+      div.innerHTML = `
+        <h3>${entry.name}</h3>
+        <p><strong>Email:</strong> ${entry.email}</p>
+        <p>${entry.message}</p>
+        <button onclick="deleteEntry(${index})">🗑 Delete</button>
+      `;
+      savedDataDiv.appendChild(div);
+    });
+  }
+
+  // Save new entry
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+    const number=document.getElementById('number').value.trim();
+
+    if (name && email && message && number) {
+      entries.push({ name, email, message, number });
+      localStorage.setItem('entries', JSON.stringify(entries));
+      displayEntries();
+      form.reset();
+    }
+  });
+
+  // Delete entry
+  function deleteEntry(index) {
+    entries.splice(index, 1);
+    localStorage.setItem('entries', JSON.stringify(entries));
+    displayEntries();
+  }
+
+  // Display existing data on page load
+  displayEntries();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Money Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #007bff, #00c851);
+        color: #333;
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container {
+        background: white;
+        width: 500px;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    h1 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+    form {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+    }
+    input[type="text"], input[type="number"] {
+        width: 48%;
+        padding: 10px;
+        border-radius: 6px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+    }
+    button {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+    button:hover { background: #218838; }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        text-align: center;
+        padding: 10px;
+    }
+    th {
+        background-color: #007bff;
+        color: white;
+    }
+    .total {
+        text-align: right;
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 10px;
+        color: #333;
+    }
+    .remove-btn {
+        background: #dc3545;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .remove-btn:hover { background: #c82333; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>💵 Money Calculator</h1>
+    
+    <form id="moneyForm">
+        <input type="text" id="personName" placeholder="Enter person's name" required>
+        <input type="number" id="moneyAmount" placeholder="Enter amount " required min="0">
+        <button type="submit">Add</button>
+    </form>
+
+    <table id="moneyTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Amount (Tsh)</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Entries appear here -->
+        </tbody>
+    </table>
+
+    <div class="total" id="totalDisplay">Total: Tsh0.00</div>
+</div>
+
+<script>
+    const form = document.getElementById('moneyForm');
+    const tableBody = document.querySelector('#moneyTable tbody');
+    const totalDisplay = document.getElementById('totalDisplay');
+
+    // Load saved data from localStorage
+    let people = JSON.parse(localStorage.getItem('peopleMoneyData')) || [];
+
+    function renderTable() {
+        tableBody.innerHTML = '';
+        let total = 0;
+        people.forEach((person, index) => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${person.name}</td>
+                <td>${person.amount.toFixed(2)}</td>
+                <td><button class="remove-btn" data-index="${index}">Remove</button></td>
+            `;
+            tableBody.appendChild(row);
+            total += person.amount;
+        });
+        totalDisplay.textContent = `Total: Tsh${total.toFixed(2)}`;
+        saveToLocalStorage();
+        addRemoveListeners();
+    }
+
+    function saveToLocalStorage() {
+        localStorage.setItem('peopleMoneyData', JSON.stringify(people));
+    }
+
+    function addRemoveListeners() {
+        document.querySelectorAll('.remove-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const index = btn.getAttribute('data-index');
+                people.splice(index, 1);
+                renderTable();
+            });
+        });
+    }
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const name = document.getElementById('personName').value.trim();
+        const amount = parseFloat(document.getElementById('moneyAmount').value);
+
+        if (!name || isNaN(amount) || amount < 0) {
+            alert('Please enter a valid name and amount.');
+            return;
+        }
+
+        people.push({ name, amount });
+        renderTable();
+        form.reset();
+    });
+
+    // Initial render
+    renderTable();
+</script>
+
+</body>
+</html>

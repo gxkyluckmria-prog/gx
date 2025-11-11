@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preserve Your Money</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: url('https://images.unsplash.com/photo-1611384970927-9352d5dc3082?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Overlay for dark effect */
+    body::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 0;
+    }
+
+    /* Content container */
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #00b894;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      animation: fadeIn 3s ease forwards;
+      opacity: 0;
+    }
+
+    /* Fade-in animation for text */
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      font-size: 1.1rem;
+      animation: fadeInUp 3s ease forwards;
+      opacity: 0;
+    }
+
+    ul li {
+      margin: 10px 0;
+      position: relative;
+      padding-left: 25px;
+    }
+
+    ul li::before {
+      content: '💰';
+      position: absolute;
+      left: 0;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Optional: subtle floating coins animation */
+    .coin {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background: url('https://cdn-icons-png.flaticon.com/512/2305/2305852.png') no-repeat center/contain;
+      animation: floatCoins linear infinite;
+    }
+
+    @keyframes floatCoins {
+      0% { transform: translateY(100vh) rotate(0deg); }
+      100% { transform: translateY(-100px) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content">
+    <h1>Preserve Your Money!</h1>
+    <p>Saving money is the key to financial freedom. Start today and secure your future.</p>
+
+    <ul>
+      <li>Build an emergency fund for unexpected expenses</li>
+      <li>Plan for long-term goals like education and retirement</li>
+      <li>Reduce financial stress and gain peace of mind</li>
+      <li>Invest wisely to grow your wealth over time</li>
+    </ul>
+  </div>
+
+  <!-- Floating coins -->
+  <div class="coin" style="left:10%; animation-duration: 8s;"></div>
+  <div class="coin" style="left:30%; animation-duration: 10s;"></div>
+  <div class="coin" style="left:50%; animation-duration: 7s;"></div>
+  <div class="coin" style="left:70%; animation-duration: 9s;"></div>
+  <div class="coin" style="left:90%; animation-duration: 12s;"></div>
+
+</body>
+</html>
