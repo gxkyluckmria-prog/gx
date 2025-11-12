@@ -1,137 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preserve Your Money</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investing Knowledge Hub</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background: #1a1a2e;
+    color: #fff;
+  }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  /* Falling coins container */
+  .coins {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+  .coin {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('https://cdn.pixabay.com/photo/2013/07/13/10/21/coin-158191_1280.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    animation: fall linear infinite;
+  }
 
-    body {
-      font-family: 'Poppins', sans-serif;
-      color: #fff;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: url('https://images.unsplash.com/photo-1611384970927-9352d5dc3082?auto=format&fit=crop&w=1600&q=80') no-repeat center center/cover;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Overlay for dark effect */
-    body::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      z-index: 0;
-    }
-
-    /* Content container */
-    .content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 3rem;
-      color: #00b894;
-      margin-bottom: 20px;
-      animation: bounce 2s infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-20px); }
-    }
-
-    p {
-      font-size: 1.2rem;
-      line-height: 1.6;
-      margin-bottom: 30px;
-      animation: fadeIn 3s ease forwards;
+  @keyframes fall {
+    0% {
+      transform: translateY(-50px) rotate(0deg);
       opacity: 0;
     }
-
-    /* Fade-in animation for text */
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    30% {
+      opacity: 1;
     }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      font-size: 1.1rem;
-      animation: fadeInUp 3s ease forwards;
+    100% {
+      transform: translateY(110vh) rotate(360deg);
       opacity: 0;
     }
+  }
 
-    ul li {
-      margin: 10px 0;
-      position: relative;
-      padding-left: 25px;
-    }
+  header {
+    background: rgba(26,26,46,0.9);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
 
-    ul li::before {
-      content: '💰';
-      position: absolute;
-      left: 0;
-    }
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
 
-    @keyframes fadeInUp {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
-    }
+  .container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+  }
 
-    /* Optional: subtle floating coins animation */
-    .coin {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      background: url('https://cdn-icons-png.flaticon.com/512/2305/2305852.png') no-repeat center/contain;
-      animation: floatCoins linear infinite;
-    }
+  h2 {
+    color: #ffd700;
+    margin-top: 2rem;
+  }
 
-    @keyframes floatCoins {
-      0% { transform: translateY(100vh) rotate(0deg); }
-      100% { transform: translateY(-100px) rotate(360deg); }
-    }
-  </style>
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 0.5rem 0;
+  }
+
+  a {
+    color: #00bfff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .resource-card {
+    background: rgba(0,0,0,0.6);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+
+  footer {
+    background: rgba(26,26,46,0.9);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+</style>
 </head>
 <body>
 
-  <div class="content">
-    <h1>Preserve Your Money!</h1>
-    <p>Saving money is the key to financial freedom. Start today and secure your future.</p>
+<!-- Falling coins container -->
+<div class="coins"></div>
 
+<header>
+  <h1>Investing Knowledge Hub</h1>
+  <p>Learn how to invest money wisely and grow your wealth</p>
+</header>
+
+<div class="container">
+  <section>
+    <h2>Basics of Investing</h2>
+    <p>Investing is the process of allocating money in a way that generates future returns. Here are some essential resources to start learning:</p>
     <ul>
-      <li>Build an emergency fund for unexpected expenses</li>
-      <li>Plan for long-term goals like education and retirement</li>
-      <li>Reduce financial stress and gain peace of mind</li>
-      <li>Invest wisely to grow your wealth over time</li>
+      <li><a href="https://www.investopedia.com/terms/i/investing.asp" target="_blank">Investopedia: Investing Basics</a></li>
+      <li><a href="https://www.nerdwallet.com/best/investing/how-to-invest" target="_blank">NerdWallet: How to Start Investing</a></li>
+      <li><a href="https://www.fidelity.com/learning-center/investment-products" target="_blank">Fidelity Learning Center</a></li>
     </ul>
-  </div>
+  </section>
 
-  <!-- Floating coins -->
-  <div class="coin" style="left:10%; animation-duration: 8s;"></div>
-  <div class="coin" style="left:30%; animation-duration: 10s;"></div>
-  <div class="coin" style="left:50%; animation-duration: 7s;"></div>
-  <div class="coin" style="left:70%; animation-duration: 9s;"></div>
-  <div class="coin" style="left:90%; animation-duration: 12s;"></div>
-<a href="sed.html">CLICK HERE TO LEARN MORE</a>
+  <section>
+    <h2>Stock Market Investing</h2>
+    <p>Stocks are one of the most common investment options. Learn about stock markets, shares, and strategies:</p>
+    <div class="resource-card">
+      <a href="https://www.investopedia.com/terms/s/stockmarket.asp" target="_blank">Investopedia: Stock Market Overview</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.marketwatch.com/investing/stock" target="_blank">MarketWatch: Stocks</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.fool.com/investing/stock-market/" target="_blank">The Motley Fool: Stock Investing</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mutual Funds & ETFs</h2>
+    <p>Mutual funds and ETFs are pooled investments that allow diversification. Learn more:</p>
+    <div class="resource-card">
+      <a href="https://www.investopedia.com/terms/m/mutualfund.asp" target="_blank">Investopedia: Mutual Funds</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.investopedia.com/terms/e/etf.asp" target="_blank">Investopedia: ETFs Explained</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.fidelity.com/mutual-funds/overview" target="_blank">Fidelity: Mutual Funds</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cryptocurrency Investing</h2>
+    <p>Cryptos are a modern digital investment option. Understand the risks and rewards:</p>
+    <div class="resource-card">
+      <a href="https://www.coinbase.com/learn" target="_blank">Coinbase Learn</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.investopedia.com/terms/c/cryptocurrency.asp" target="_blank">Investopedia: Cryptocurrency</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.binance.com/en/academy" target="_blank">Binance Academy</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Additional Resources</h2>
+    <p>Expand your knowledge with these platforms:</p>
+    <ul>
+      <li><a href="https://www.khanacademy.org/economics-finance-domain/core-finance/investment-vehicles-tutorial" target="_blank">Khan Academy: Finance & Investing</a></li>
+      <li><a href="https://www.coursera.org/browse/business/personal-finance" target="_blank">Coursera: Personal Finance & Investing Courses</a></li>
+      <li><a href="https://www.edx.org/learn/investing" target="_blank">edX: Investing Courses</a></li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  <p>&copy; 2025 Investing Knowledge Hub. All rights reserved.</p>
+</footer>
+
+<script>
+  // Generate falling coins
+  const coinContainer = document.querySelector('.coins');
+  const numCoins = 30;
+
+  for (let i = 0; i < numCoins; i++) {
+    const coin = document.createElement('div');
+    coin.classList.add('coin');
+    coin.style.left = Math.random() * 100 + 'vw';
+    coin.style.animationDuration = (Math.random() * 5 + 3) + 's';
+    coin.style.animationDelay = Math.random() * 5 + 's';
+    coin.style.width = (Math.random() * 30 + 20) + 'px';
+    coin.style.height = coin.style.width;
+    coinContainer.appendChild(coin);
+  }
+</script>
+
 </body>
 </html>
+
 
