@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investing Knowledge Hub</title>
+<style>
+  body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+    background: #1a1a2e;
+    color: #fff;
+  }
+
+  /* Falling coins container */
+  .coins {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;
+  }
+
+  .coin {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background-image: url('https://cdn.pixabay.com/photo/2013/07/13/10/21/coin-158191_1280.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-50px) rotate(0deg);
+      opacity: 0;
+    }
+    30% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  header {
+    background: rgba(26,26,46,0.9);
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    color: #ffd700;
+    margin-top: 2rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+  }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  li {
+    margin: 0.5rem 0;
+  }
+
+  a {
+    color: #00bfff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .resource-card {
+    background: rgba(0,0,0,0.6);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+
+  footer {
+    background: rgba(26,26,46,0.9);
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+<!-- Falling coins container -->
+<div class="coins"></div>
+
+<header>
+  <h1>Investing Knowledge Hub</h1>
+  <p>Learn how to invest money wisely and grow your wealth</p>
+</header>
+
+<div class="container">
+  <section>
+    <h2>Basics of Investing</h2>
+    <p>Investing is the process of allocating money in a way that generates future returns. Here are some essential resources to start learning:</p>
+    <ul>
+      <li><a href="https://www.investopedia.com/terms/i/investing.asp" target="_blank">Investopedia: Investing Basics</a></li>
+      <li><a href="https://www.nerdwallet.com/best/investing/how-to-invest" target="_blank">NerdWallet: How to Start Investing</a></li>
+      <li><a href="https://www.fidelity.com/learning-center/investment-products" target="_blank">Fidelity Learning Center</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Stock Market Investing</h2>
+    <p>Stocks are one of the most common investment options. Learn about stock markets, shares, and strategies:</p>
+    <div class="resource-card">
+      <a href="https://www.investopedia.com/terms/s/stockmarket.asp" target="_blank">Investopedia: Stock Market Overview</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.marketwatch.com/investing/stock" target="_blank">MarketWatch: Stocks</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.fool.com/investing/stock-market/" target="_blank">The Motley Fool: Stock Investing</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Mutual Funds & ETFs</h2>
+    <p>Mutual funds and ETFs are pooled investments that allow diversification. Learn more:</p>
+    <div class="resource-card">
+      <a href="https://www.investopedia.com/terms/m/mutualfund.asp" target="_blank">Investopedia: Mutual Funds</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.investopedia.com/terms/e/etf.asp" target="_blank">Investopedia: ETFs Explained</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.fidelity.com/mutual-funds/overview" target="_blank">Fidelity: Mutual Funds</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Cryptocurrency Investing</h2>
+    <p>Cryptos are a modern digital investment option. Understand the risks and rewards:</p>
+    <div class="resource-card">
+      <a href="https://www.coinbase.com/learn" target="_blank">Coinbase Learn</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.investopedia.com/terms/c/cryptocurrency.asp" target="_blank">Investopedia: Cryptocurrency</a>
+    </div>
+    <div class="resource-card">
+      <a href="https://www.binance.com/en/academy" target="_blank">Binance Academy</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>Additional Resources</h2>
+    <p>Expand your knowledge with these platforms:</p>
+    <ul>
+      <li><a href="https://www.khanacademy.org/economics-finance-domain/core-finance/investment-vehicles-tutorial" target="_blank">Khan Academy: Finance & Investing</a></li>
+      <li><a href="https://www.coursera.org/browse/business/personal-finance" target="_blank">Coursera: Personal Finance & Investing Courses</a></li>
+      <li><a href="https://www.edx.org/learn/investing" target="_blank">edX: Investing Courses</a></li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  <p>&copy; 2025 Investing Knowledge Hub. All rights reserved.</p>
+</footer>
+
+<script>
+  // Generate falling coins
+  const coinContainer = document.querySelector('.coins');
+  const numCoins = 30;
+
+  for (let i = 0; i < numCoins; i++) {
+    const coin = document.createElement('div');
+    coin.classList.add('coin');
+    coin.style.left = Math.random() * 100 + 'vw';
+    coin.style.animationDuration = (Math.random() * 5 + 3) + 's';
+    coin.style.animationDelay = Math.random() * 5 + 's';
+    coin.style.width = (Math.random() * 30 + 20) + 'px';
+    coin.style.height = coin.style.width;
+    coinContainer.appendChild(coin);
+  }
+</script>
+
+</body>
+</html>
