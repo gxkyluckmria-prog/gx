@@ -39,160 +39,238 @@
     
     <meta name="msapplication-TileColor" content="#00a300"> 
     
-<title>Add & Save Content</title>
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-    background: #f0f2f5;
-    margin: 0;
-    padding: 0;
-  }
 
-  header {
-    background: #00b894;
-    color: white;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .container {
-    max-width: 700px;
-    margin: 40px auto;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    padding: 30px;
-  }
-
-  h2 {
-    text-align: center;
-    color: #00b894;
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  input, textarea, button {
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-  }
-
-  input:focus, textarea:focus {
-    outline: 2px solid #00b894;
-  }
-
-  button {
-    background: #00b894;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-
-  button:hover {
-    background: #019874;
-  }
-
-  .saved-data {
-    margin-top: 30px;
-  }
-
-  .entry {
-    background: #e8f9f3;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-
-  .entry h3 {
-    margin: 0;
-    color: #009970;
-  }
-
-  .entry p {
-    margin: 5px 0 0 0;
-  }
-</style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mria — Family Investing Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
+  <style>
+    .card-img { height: 220px; object-fit: cover; }
+    .project-img { height: 140px; object-fit: cover; }
+    .overlay { background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%); }
+    .caption { position: absolute; left:0; right:0; bottom:0; padding:10px; color:white; font-weight:600; text-align:center; }
+  </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800">
+  <header class="bg-gradient-to-r from-sky-600 to-emerald-600 text-white">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-5">
+      <div class="flex items-center gap-4">
+        <div class="rounded-full bg-white/20 p-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 7v4a4 4 0 004 4h10a4 4 0 004-4V7m-6 9v3m-4-3v3" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-2xl font-bold">Mria</h1>
+          <p class="text-sm opacity-90">Family investing — practical steps and bank services</p>
+        </div>
+      </div>
+      <nav class="space-x-4 hidden md:block">
+        <a href="#how" class="hover:underline">How</a>
+        <a href="#projects" class="hover:underline">Projects</a>
+        <a href="#gallery" class="hover:underline">Gallery</a>
+        <a href="#banks" class="hover:underline">Banking</a>
+        <a href="#contact" class="hover:underline">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <h1>add your name here!!</h1>
+  <main class="max-w-6xl mx-auto p-6">
+    <!-- Hero -->
+    <section class="grid md:grid-cols-2 gap-6 items-center mb-8">
+      <div class="space-y-4">
+        <h2 class="text-3xl md:text-4xl font-extrabold">How a Family Can Invest and Earn Across Economies</h2>
+        <p class="text-lg text-gray-600">Step-by-step actionable guide that shows families how to save, invest, and diversify income — with project ideas and mobile banking services that work on all networks.</p>
+        <div class="flex gap-3">
+          <a href="#how" class="px-4 py-2 bg-emerald-600 text-white rounded shadow hover:opacity-95">Start Learning</a>
+          <a href="#projects" class="px-4 py-2 border border-emerald-600 text-emerald-600 rounded">See Projects</a>
+        </div>
+      </div>
+      <div class="relative rounded overflow-hidden shadow-lg">
+        <img alt="family investing together" src="https://images.unsplash.com/photo-1520975910062-0d2e2c7e2f3b?q=80&w=1600&auto=format&fit=crop" class="w-full h-80 object-cover" />
+        <div class="absolute bottom-4 left-4 bg-black/40 text-white p-3 rounded">Invest together. Grow together.</div>
+      </div>
+    </section>
 
+    <!-- How: steps -->
+    <section id="how" class="mb-10">
+      <h3 class="text-2xl font-semibold mb-4">Practical Steps for Family Investing</h3>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white rounded shadow p-4">
+          <h4 class="font-bold">1. Save Regularly</h4>
+          <p class="text-sm text-gray-700">Open a family savings account or use mobile money to create a weekly/monthly savings plan. Small consistent deposits compound over time.</p>
+        </div>
+        <div class="bg-white rounded shadow p-4">
+          <h4 class="font-bold">2. Set Clear Goals</h4>
+          <p class="text-sm text-gray-700">Decide what you’re saving for (education, home, business). Assign timelines and amounts so the whole family knows the plan.</p>
+        </div>
+        <div class="bg-white rounded shadow p-4">
+          <h4 class="font-bold">3. Diversify Income</h4>
+          <p class="text-sm text-gray-700">Combine multiple income sources: small business, agriculture, digital sales, and renting out assets to reduce risk.</p>
+        </div>
+        <div class="bg-white rounded shadow p-4">
+          <h4 class="font-bold">4. Start Small Projects</h4>
+          <p class="text-sm text-gray-700">Low-cost projects (poultry, vegetable farming, tailoring) provide quick returns and teach business skills to family members.</p>
+        </div>
+        <div class="bg-white rounded shadow p-4">
+          <h4 class="font-bold">5. Use Mobile Banking</h4>
+          <p class="text-sm text-gray-700">Choose services that work on USSD, SMS, and smartphone apps so every family member — regardless of network or phone type — can participate.</p>
+        </div>
+        <div class="bg-white rounded shadow p-4">
+          <h4 class="font-bold">6. Reinvest Profits</h4>
+          <p class="text-sm text-gray-700">Instead of spending all profits, allocate a percentage back into the project and save another portion for emergencies.</p>
+        </div>
+      </div>
+    </section>
 
-</header>
+    <!-- Projects -->
+    <section id="projects" class="mb-10">
+      <h3 class="text-2xl font-semibold mb-4">Family Project Ideas That Earn Money</h3>
+      <p class="text-gray-600 mb-4">Short descriptions and expected benefits for each project.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <article class="bg-white rounded shadow p-4">
+          <img src="https://images.unsplash.com/photo-1551446591-142875a901a1?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="vegetable farming">
+          <h4 class="font-bold">Vegetable Farming (Market Supply)</h4>
+          <p class="text-sm text-gray-700">Low start-up cost, quick harvest cycles, steady local demand. Good for monthly cash flow.</p>
+        </article>
+        <article class="bg-white rounded shadow p-4">
+          <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="poultry farming">
+          <h4 class="font-bold">Poultry for Eggs and Meat</h4>
+          <p class="text-sm text-gray-700">Fast turnover, repeatable sales. Eggs provide daily income while broilers give occasional lump sums.</p>
+        </article>
+        <article class="bg-white rounded shadow p-4">
+          <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="home-based business">
+          <h4 class="font-bold">Home-Based Food Processing</h4>
+          <p class="text-sm text-gray-700">Processing fruits, grains, or making snacks adds value and allows you to sell at higher prices.</p>
+        </article>
+        <article class="bg-white rounded shadow p-4">
+          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="repair and craft">
+          <h4 class="font-bold">Repair & Craft Services</h4>
+          <p class="text-sm text-gray-700">Carpentry, tailoring, and repair services are evergreen and can be taught within the family.</p>
+        </article>
+        <article class="bg-white rounded shadow p-4">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="solar energy">
+          <h4 class="font-bold">Home Solar for Savings</h4>
+          <p class="text-sm text-gray-700">Reduce electricity bills, sell excess power where possible, and invest savings into other projects.</p>
+        </article>
+        <article class="bg-white rounded shadow p-4">
+          <img src="https://images.unsplash.com/photo-1519741491881-6f9ef1f0f9c7?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="online business">
+          <h4 class="font-bold">Online Selling & Services</h4>
+          <p class="text-sm text-gray-700">Sell crafts, produce, or services via social media; low overhead and wide customer reach.</p>
+        </article>
+      </div>
+    </section>
 
-<div class="container">
-  <h2>Add New member</h2>
-  <form id="contentForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="number"id="number"placeholder="your phone number"required>
-    <input type="email" id="email" placeholder="Your Email" required>
-    <textarea id="message" rows="4" placeholder="Your Amount..." required></textarea>
-    <button type="submit">Save Content</button>
-  </form>
+    <!-- Gallery with lightbox -->
+    <section id="gallery" class="mb-10">
+      <h3 class="text-2xl font-semibold mb-4">Gallery — Families Investing</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        <!-- 10 images -->
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1616628188471-4b4b3b651f12?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Family meeting to plan investment.">
+            <img src="https://images.unsplash.com/photo-1616628188471-4b4b3b651f12?q=80&w=800&auto=format&fit=crop" alt="family meeting" class="w-full h-48 object-cover">
+            <div class="caption">Family planning investment</div>
+          </a>
+        </div>
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1573497019410-38fe7a1989e2?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Mother running a small family business.">
+            <img src="https://images.unsplash.com/photo-1573497019410-38fe7a1989e2?q=80&w=800&auto=format&fit=crop" alt="mother business" class="w-full h-48 object-cover">
+            <div class="caption">Mother running the family shop</div>
+          </a>
+        </div>
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Father teaching kids to save.">
+            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=800&auto=format&fit=crop" alt="father teaching" class="w-full h-48 object-cover">
+            <div class="caption">Teaching children to save</div>
+          </a>
+        </div>
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Family building a house together.">
+            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=800&auto=format&fit=crop" alt="building house" class="w-full h-48 object-cover">
+            <div class="caption">Building a family home</div>
+          </a>
+        </div>
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1533228100844-10a0a7cb9a3a?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Elders advising youth on finance.">
+            <img src="https://images.unsplash.com/photo-1533228100844-10a0a7cb9a3a?q=80&w=800&auto=format&fit=crop" alt="elders advising" class="w-full h-48 object-cover">
+            <div class="caption">Elders advising youth</div>
+          </a>
+        </div>
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1603575448360-2e86b5f26205?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Young entrepreneurs starting a family enterprise.">
+            <img src="https://images.unsplash.com/photo-1603575448360-2e86b5f26205?q=80&w=800&auto=format&fit=crop" alt="young entrepreneurs" class="w-full h-48 object-cover">
+            <div class="caption">Young family entrepreneurs</div>
+          </a>
+        </div>
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Family meeting about business goals.">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" alt="family meeting 2" class="w-full h-48 object-cover">
+            <div class="caption">Business goals meeting</div>
+          </a>
+        </div>
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Mother teaching daughter about investing.">
+            <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?q=80&w=800&auto=format&fit=crop" alt="mother daughter" class="w-full h-48 object-cover">
+            <div class="caption">Teaching girls financial skills</div>
+          </a>
+        </div>
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Using mobile banking for family projects.">
+            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" alt="mobile banking" class="w-full h-48 object-cover">
+            <div class="caption">Mobile banking for projects</div>
+          </a>
+        </div>
+        <div class="relative rounded overflow-hidden">
+          <a href="https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Family celebrating financial success.">
+            <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=800&auto=format&fit=crop" alt="celebration" class="w-full h-48 object-cover">
+            <div class="caption">Celebrating financial milestones</div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-  <div class="saved-data" id="savedData">
-    <h2>Saved Entries</h2>
-    <!-- Entries appear here -->
-  </div>
-</div>
+    <!-- Banking services: works on all networks -->
+    <section id="banks" class="mb-10">
+      <h3 class="text-2xl font-semibold mb-4">Banking & Mobile Money Services (All Networks)</h3>
+      <p class="text-gray-600 mb-4">Choose services that support USSD, SMS, and smartphone apps so every family member can send, save, and borrow regardless of their phone or network.</p>
 
-<script>
-  const form = document.getElementById('contentForm');
-  const savedDataDiv = document.getElementById('savedData');
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-bold">M-PESA / Vodafone Cash / Airtel Money</h4>
+          <p class="text-sm text-gray-700">Popular mobile money platforms with USSD codes and apps — ideal for low-bandwidth networks and feature phones.</p>
+          <div class="mt-2 text-sm"><a href="https://www.safaricom.co.ke/personal/m-pesa" class="underline">M-PESA</a></div>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-bold">Bank Mobile Apps (NMB, CRDB, Stanbic, Equity)</h4>
+          <p class="text-sm text-gray-700">Banks offer mobile apps and USSD access; use them to keep family accounts transparent and to apply for small business loans.</p>
+          <div class="mt-2 text-sm"><a href="https://www.nmbbank.co.tz" class="underline">NMB</a> • <a href="https://www.crdbbank.co.tz" class="underline">CRDB</a></div>
+        </div>
+        <div class="bg-white p-4 rounded shadow">
+          <h4 class="font-bold">Agent Networks & Cash-In/Cash-Out</h4>
+          <p class="text-sm text-gray-700">Use agent networks to deposit or withdraw cash; this links physical money to mobile accounts for businesses and households.</p>
+        </div>
+      </div>
 
-  // Load saved data from localStorage
-  let entries = JSON.parse(localStorage.getItem('entries')) || [];
+      <p class="text-xs text-gray-500 mt-3">Always verify security and transaction fees before using any financial service.</p>
+    </section>
 
-  // Display saved entries
-  function displayEntries() {
-    savedDataDiv.innerHTML = '<h2>Saved Entries</h2>';
-    entries.forEach((entry, index) => {
-      const div = document.createElement('div');
-      div.classList.add('entry');
-      div.innerHTML = `
-        <h3>${entry.name}</h3>
-        <p><strong>Email:</strong> ${entry.email}</p>
-        <p>${entry.message}</p>
-        <button onclick="deleteEntry(${index})">🗑 Delete</button>
-      `;
-      savedDataDiv.appendChild(div);
-    });
-  }
+    <!-- Call to action -->
+    <section class="mb-10 p-6 bg-white rounded shadow text-center">
+      <h4 class="text-xl font-bold">Ready to Start?</h4>
+      <p class="text-gray-700 mb-4">Get a simple family investment plan — send us an email or download the starter checklist.</p>
+      <div class="flex items-center justify-center gap-3">
+        <a href="mailto:hello@mria.example" class="px-5 py-2 bg-sky-600 text-white rounded">Email Us</a>
+        <a href="#" class="px-5 py-2 border border-sky-600 text-sky-600 rounded">Download Checklist (PDF)</a>
+      </div>
+    </section>
 
-  // Save new entry
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const number=document.getElementById('number').value.trim();
+    <footer class="text-center text-sm text-gray-600 py-6">
+      <div>Mria &copy; <span id="year"></span>. Empowering family investments.</div>
+      <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    </footer>
+  </main>
 
-    if (name && email && message && number) {
-      entries.push({ name, email, message, number });
-      localStorage.setItem('entries', JSON.stringify(entries));
-      displayEntries();
-      form.reset();
-    }
-  });
-
-  // Delete entry
-  function deleteEntry(index) {
-    entries.splice(index, 1);
-    localStorage.setItem('entries', JSON.stringify(entries));
-    displayEntries();
-  }
-
-  // Display existing data on page load
-  displayEntries();
-</script>
-
+  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
 </body>
 </html>
-
