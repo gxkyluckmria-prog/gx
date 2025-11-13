@@ -40,21 +40,18 @@
     <meta name="msapplication-TileColor" content="#00a300"> 
     
 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mria — Family Investing Guide</title>
+  
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/css/lightbox.min.css" rel="stylesheet">
   <style>
+    /* Small custom styles for nicer image grid and cards */
     .card-img { height: 220px; object-fit: cover; }
     .project-img { height: 140px; object-fit: cover; }
-    .overlay { background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,0.55) 100%); }
-    .caption { position: absolute; left:0; right:0; bottom:0; padding:10px; color:white; font-weight:600; text-align:center; }
+    .glass { background: rgba(255,255,255,0.6); backdrop-filter: blur(6px); }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <header class="bg-gradient-to-r from-sky-600 to-emerald-600 text-white">
-    <div class="max-w-6xl mx-auto flex items-center justify-between p-5">
+  <header class="bg-gradient-to-r from-green-600 to-blue-600 text-white">
+    <div class="max-w-6xl mx-auto flex items-center justify-between p-6">
       <div class="flex items-center gap-4">
         <div class="rounded-full bg-white/20 p-2">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -63,15 +60,14 @@
         </div>
         <div>
           <h1 class="text-2xl font-bold">Mria</h1>
-          <p class="text-sm opacity-90">Family investing — practical steps and bank services</p>
+          <p class="text-sm opacity-90">Familia. Uwekezaji. Maendeleo.</p>
         </div>
       </div>
       <nav class="space-x-4 hidden md:block">
-        <a href="#how" class="hover:underline">How</a>
-        <a href="#projects" class="hover:underline">Projects</a>
-        <a href="#gallery" class="hover:underline">Gallery</a>
-        <a href="#banks" class="hover:underline">Banking</a>
-        <a href="#contact" class="hover:underline">Contact</a>
+        <a href="#projects" class="hover:underline">Miradi</a>
+        <a href="#gallery" class="hover:underline">Picha</a>
+        <a href="#banks" class="hover:underline">Huduma za Benki</a>
+        <a href="#contact" class="hover:underline">Wasiliana</a>
       </nav>
     </div>
   </header>
@@ -80,197 +76,175 @@
     <!-- Hero -->
     <section class="grid md:grid-cols-2 gap-6 items-center mb-8">
       <div class="space-y-4">
-        <h2 class="text-3xl md:text-4xl font-extrabold">How a Family Can Invest and Earn Across Economies</h2>
-        <p class="text-lg text-gray-600">Step-by-step actionable guide that shows families how to save, invest, and diversify income — with project ideas and mobile banking services that work on all networks.</p>
+        <h2 class="text-3xl md:text-4xl font-extrabold">Mria — Kukuza Uwekezaji wa Familia</h2>
+        <p class="text-lg text-gray-600">Tunachanganya elimu ya kifedha, fursa za miradi, na huduma za benki mkononi ili familia ziweze kuwekeza na kupata maendeleo endelevu.</p>
         <div class="flex gap-3">
-          <a href="#how" class="px-4 py-2 bg-emerald-600 text-white rounded shadow hover:opacity-95">Start Learning</a>
-          <a href="#projects" class="px-4 py-2 border border-emerald-600 text-emerald-600 rounded">See Projects</a>
+          <a href="#projects" class="px-4 py-2 bg-green-600 text-white rounded shadow hover:opacity-95">Tazama Miradi</a>
+          <a href="#contact" class="px-4 py-2 border border-green-600 text-green-600 rounded">Wasiliana</a>
         </div>
       </div>
       <div class="relative rounded overflow-hidden shadow-lg">
-        <img alt="family investing together" src="https://images.unsplash.com/photo-1520975910062-0d2e2c7e2f3b?q=80&w=1600&auto=format&fit=crop" class="w-full h-80 object-cover" />
-        <div class="absolute bottom-4 left-4 bg-black/40 text-white p-3 rounded">Invest together. Grow together.</div>
+        <img alt="familia ikijenga" src="https://images.unsplash.com/photo-1520416041263-0b25e7f1b6f8?q=80&w=1600&auto=format&fit=crop&ixlib=rb-4.0.3&s=2e9b0a1d2f5d3a0a0c3b5c7d3a5f4a6b" class="w-full h-80 object-cover" />
+        <div class="absolute bottom-4 left-4 bg-black/40 text-white p-3 rounded">Familia inapowekeza pamoja — Ndoto inakuwa malengo</div>
       </div>
     </section>
 
-    <!-- How: steps -->
-    <section id="how" class="mb-10">
-      <h3 class="text-2xl font-semibold mb-4">Practical Steps for Family Investing</h3>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="font-bold">1. Save Regularly</h4>
-          <p class="text-sm text-gray-700">Open a family savings account or use mobile money to create a weekly/monthly savings plan. Small consistent deposits compound over time.</p>
-        </div>
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="font-bold">2. Set Clear Goals</h4>
-          <p class="text-sm text-gray-700">Decide what you’re saving for (education, home, business). Assign timelines and amounts so the whole family knows the plan.</p>
-        </div>
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="font-bold">3. Diversify Income</h4>
-          <p class="text-sm text-gray-700">Combine multiple income sources: small business, agriculture, digital sales, and renting out assets to reduce risk.</p>
-        </div>
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="font-bold">4. Start Small Projects</h4>
-          <p class="text-sm text-gray-700">Low-cost projects (poultry, vegetable farming, tailoring) provide quick returns and teach business skills to family members.</p>
-        </div>
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="font-bold">5. Use Mobile Banking</h4>
-          <p class="text-sm text-gray-700">Choose services that work on USSD, SMS, and smartphone apps so every family member — regardless of network or phone type — can participate.</p>
-        </div>
-        <div class="bg-white rounded shadow p-4">
-          <h4 class="font-bold">6. Reinvest Profits</h4>
-          <p class="text-sm text-gray-700">Instead of spending all profits, allocate a percentage back into the project and save another portion for emergencies.</p>
-        </div>
+    <!-- Gallery -->
+    <section id="gallery" class="mb-10">
+      <h3 class="text-2xl font-semibold mb-4">Picha za Familia Wakiwekeza</h3>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <img alt="familia ikihifadhi" src="https://images.unsplash.com/photo-1524253482453-3fed8d2fe12b?q=80&w=1200&auto=format&fit=crop" class="card-img rounded shadow" />
+        <img alt="mama na mtoto akihifadhi" src="https://images.unsplash.com/photo-1531259683007-016a2a7d66f9?q=80&w=1200&auto=format&fit=crop" class="card-img rounded shadow" />
+        <img alt="familia wakipanga miradi" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" class="card-img rounded shadow" />
+        <img alt="wanawake wakifanya biashara" src="https://images.unsplash.com/photo-1542223616-1cf6b6c8f6d7?q=80&w=1200&auto=format&fit=crop" class="card-img rounded shadow" />
       </div>
     </section>
 
     <!-- Projects -->
     <section id="projects" class="mb-10">
-      <h3 class="text-2xl font-semibold mb-4">Family Project Ideas That Earn Money</h3>
-      <p class="text-gray-600 mb-4">Short descriptions and expected benefits for each project.</p>
+      <h3 class="text-2xl font-semibold mb-4">Miradi Inayoweza Kuwawezesha Wanafamilia</h3>
+      <p class="text-gray-600 mb-6">Mfano wa miradi yenye rentabili na athari chanya kwa familia. Bonyeza mradi kujifahamisha zaidi.</p>
+
       <div class="grid md:grid-cols-3 gap-6">
-        <article class="bg-white rounded shadow p-4">
-          <img src="https://images.unsplash.com/photo-1551446591-142875a901a1?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="vegetable farming">
-          <h4 class="font-bold">Vegetable Farming (Market Supply)</h4>
-          <p class="text-sm text-gray-700">Low start-up cost, quick harvest cycles, steady local demand. Good for monthly cash flow.</p>
+        <!-- Project 1 -->
+        <article class="bg-white rounded shadow p-4 glass">
+          <img src="https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=1200&auto=format&fit=crop" alt="kilimo cha mboga" class="project-img w-full rounded mb-3" />
+          <h4 class="font-bold">Kilimo cha Mboga (Greenhouse)</h4>
+          <p class="text-sm text-gray-700">Kilimo mdogo wa mboga unaweza kuzaa mara kwa mara na kuuza sokoni au kwa wateja wa ndani.</p>
+          <ul class="mt-2 text-sm list-disc list-inside text-gray-700">
+            <li>Initial cost inayofaa</li>
+            <li>Faida ndani ya miezi 3–6</li>
+            <li>Inaweza kuendeshwa na familia nzima</li>
+          </ul>
         </article>
-        <article class="bg-white rounded shadow p-4">
-          <img src="https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="poultry farming">
-          <h4 class="font-bold">Poultry for Eggs and Meat</h4>
-          <p class="text-sm text-gray-700">Fast turnover, repeatable sales. Eggs provide daily income while broilers give occasional lump sums.</p>
+
+        <!-- Project 2 -->
+        <article class="bg-white rounded shadow p-4 glass">
+          <img src="https://images.unsplash.com/photo-1506719040634-7a1d2ea5a7a5?q=80&w=1200&auto=format&fit=crop" alt="ufugaji wa kuku" class="project-img w-full rounded mb-3" />
+          <h4 class="font-bold">Ufugaji wa Kuku (Poultry)</h4>
+          <p class="text-sm text-gray-700">Ufugaji mdogo wa kuku kwa yai na nyama ni mradi wa kuanza kwa gharama nafuu.</p>
+          <ul class="mt-2 text-sm list-disc list-inside text-gray-700">
+            <li>Soko la ndani linalohitaji</li>
+            <li>Uwekezaji wa chini kwa awali</li>
+            <li>Mzigo wa kazi unaweza kugawanywa</li>
+          </ul>
         </article>
-        <article class="bg-white rounded shadow p-4">
-          <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="home-based business">
-          <h4 class="font-bold">Home-Based Food Processing</h4>
-          <p class="text-sm text-gray-700">Processing fruits, grains, or making snacks adds value and allows you to sell at higher prices.</p>
+
+        <!-- Project 3 -->
+        <article class="bg-white rounded shadow p-4 glass">
+          <img src="https://images.unsplash.com/photo-1484981184820-2e84ea0e4a3f?q=80&w=1200&auto=format&fit=crop" alt="biashara ndogo mtandaoni" class="project-img w-full rounded mb-3" />
+          <h4 class="font-bold">Biashara Ndogo Mtandaoni</h4>
+          <p class="text-sm text-gray-700">Duka la mtandaoni au kuuza bidhaa za kienyeji kupitia mitandao ya kijamii.</p>
+          <ul class="mt-2 text-sm list-disc list-inside text-gray-700">
+            <li>Inahitaji ujuzi wa masoko kidogo</li>
+            <li>Ina uwezo wa kukua kwa mbali</li>
+            <li>Uwekezaji wa masoko na hisa</li>
+          </ul>
         </article>
-        <article class="bg-white rounded shadow p-4">
-          <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="repair and craft">
-          <h4 class="font-bold">Repair & Craft Services</h4>
-          <p class="text-sm text-gray-700">Carpentry, tailoring, and repair services are evergreen and can be taught within the family.</p>
+
+        <!-- Project 4 -->
+        <article class="bg-white rounded shadow p-4 glass">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" alt="ufundi/carpentry" class="project-img w-full rounded mb-3" />
+          <h4 class="font-bold">Ufundishaji & Ufundi</h4>
+          <p class="text-sm text-gray-700">Huduma ya ujenzi, ukataji wa mbao, na ufundi wa umeme kwa masoko ya ndani.</p>
         </article>
-        <article class="bg-white rounded shadow p-4">
-          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="solar energy">
-          <h4 class="font-bold">Home Solar for Savings</h4>
-          <p class="text-sm text-gray-700">Reduce electricity bills, sell excess power where possible, and invest savings into other projects.</p>
+
+        <!-- Project 5 -->
+        <article class="bg-white rounded shadow p-4 glass">
+          <img src="https://images.unsplash.com/photo-1432821596592-e2c18b78144f?q=80&w=1200&auto=format&fit=crop" alt="utengenezaji wa mafuta ya kupikia" class="project-img w-full rounded mb-3" />
+          <h4 class="font-bold">Vifaa vya Chakula (Processing)</h4>
+          <p class="text-sm text-gray-700">Kupitia usindikaji mdogo wa vyakula (mfano: kusaga nafaka, kusindika matunda) ili kuongeza thamani.</p>
         </article>
-        <article class="bg-white rounded shadow p-4">
-          <img src="https://images.unsplash.com/photo-1519741491881-6f9ef1f0f9c7?q=80&w=1200&auto=format&fit=crop" class="project-img w-full rounded mb-3" alt="online business">
-          <h4 class="font-bold">Online Selling & Services</h4>
-          <p class="text-sm text-gray-700">Sell crafts, produce, or services via social media; low overhead and wide customer reach.</p>
+
+        <!-- Project 6 -->
+        <article class="bg-white rounded shadow p-4 glass">
+          <img src="https://images.unsplash.com/photo-1519741491881-6f9ef1f0f9c7?q=80&w=1200&auto=format&fit=crop" alt="nishati ya jua" class="project-img w-full rounded mb-3" />
+          <h4 class="font-bold">Nishati ya Jua kwa Nyumba</h4>
+          <p class="text-sm text-gray-700">Paneli za jua kwa matumizi ya nyumbani huokoa gharama za umeme na huongeza thamani ya kaya.</p>
         </article>
       </div>
     </section>
 
-    <!-- Gallery with lightbox -->
-    <section id="gallery" class="mb-10">
-      <h3 class="text-2xl font-semibold mb-4">Gallery — Families Investing</h3>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-        <!-- 10 images -->
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1616628188471-4b4b3b651f12?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Family meeting to plan investment.">
-            <img src="https://images.unsplash.com/photo-1616628188471-4b4b3b651f12?q=80&w=800&auto=format&fit=crop" alt="family meeting" class="w-full h-48 object-cover">
-            <div class="caption">Family planning investment</div>
-          </a>
-        </div>
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1573497019410-38fe7a1989e2?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Mother running a small family business.">
-            <img src="https://images.unsplash.com/photo-1573497019410-38fe7a1989e2?q=80&w=800&auto=format&fit=crop" alt="mother business" class="w-full h-48 object-cover">
-            <div class="caption">Mother running the family shop</div>
-          </a>
-        </div>
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Father teaching kids to save.">
-            <img src="https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=800&auto=format&fit=crop" alt="father teaching" class="w-full h-48 object-cover">
-            <div class="caption">Teaching children to save</div>
-          </a>
-        </div>
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Family building a house together.">
-            <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?q=80&w=800&auto=format&fit=crop" alt="building house" class="w-full h-48 object-cover">
-            <div class="caption">Building a family home</div>
-          </a>
-        </div>
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1533228100844-10a0a7cb9a3a?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Elders advising youth on finance.">
-            <img src="https://images.unsplash.com/photo-1533228100844-10a0a7cb9a3a?q=80&w=800&auto=format&fit=crop" alt="elders advising" class="w-full h-48 object-cover">
-            <div class="caption">Elders advising youth</div>
-          </a>
-        </div>
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1603575448360-2e86b5f26205?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Young entrepreneurs starting a family enterprise.">
-            <img src="https://images.unsplash.com/photo-1603575448360-2e86b5f26205?q=80&w=800&auto=format&fit=crop" alt="young entrepreneurs" class="w-full h-48 object-cover">
-            <div class="caption">Young family entrepreneurs</div>
-          </a>
-        </div>
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Family meeting about business goals.">
-            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" alt="family meeting 2" class="w-full h-48 object-cover">
-            <div class="caption">Business goals meeting</div>
-          </a>
-        </div>
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Mother teaching daughter about investing.">
-            <img src="https://images.unsplash.com/photo-1598970434795-0c54fe7c0642?q=80&w=800&auto=format&fit=crop" alt="mother daughter" class="w-full h-48 object-cover">
-            <div class="caption">Teaching girls financial skills</div>
-          </a>
-        </div>
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Using mobile banking for family projects.">
-            <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=800&auto=format&fit=crop" alt="mobile banking" class="w-full h-48 object-cover">
-            <div class="caption">Mobile banking for projects</div>
-          </a>
-        </div>
-        <div class="relative rounded overflow-hidden">
-          <a href="https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=1600&auto=format&fit=crop" data-lightbox="family" data-title="Family celebrating financial success.">
-            <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=800&auto=format&fit=crop" alt="celebration" class="w-full h-48 object-cover">
-            <div class="caption">Celebrating financial milestones</div>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Banking services: works on all networks -->
+    <!-- Mobile banking services -->
     <section id="banks" class="mb-10">
-      <h3 class="text-2xl font-semibold mb-4">Banking & Mobile Money Services (All Networks)</h3>
-      <p class="text-gray-600 mb-4">Choose services that support USSD, SMS, and smartphone apps so every family member can send, save, and borrow regardless of their phone or network.</p>
+      <h3 class="text-2xl font-semibold mb-4">Huduma za Benki Mkono & Viungo</h3>
+      <p class="text-gray-600 mb-4">Huduma hizi zinaweza kusaidia kusimamia fedha za familia, kutuma/kupokea, na kupata mikopo midogo kwa miradi.</p>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <div class="bg-white p-4 rounded shadow">
-          <h4 class="font-bold">M-PESA / Vodafone Cash / Airtel Money</h4>
-          <p class="text-sm text-gray-700">Popular mobile money platforms with USSD codes and apps — ideal for low-bandwidth networks and feature phones.</p>
-          <div class="mt-2 text-sm"><a href="https://www.safaricom.co.ke/personal/m-pesa" class="underline">M-PESA</a></div>
+        <div class="bg-white rounded shadow p-4 flex items-start gap-3">
+          <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#f59e0b"/><path d="M7 12h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <div class="font-bold">M-PESA (Safaricom)</div>
+            <div class="text-sm text-gray-700">Huduma ya malipo ya simu, uhamishaji wa pesa, na huduma za biashara.</div>
+            <a class="text-sm underline mt-2 inline-block" href="https://www.safaricom.co.ke/personal/m-pesa">Tovuti ya M-PESA</a>
+          </div>
         </div>
-        <div class="bg-white p-4 rounded shadow">
-          <h4 class="font-bold">Bank Mobile Apps (NMB, CRDB, Stanbic, Equity)</h4>
-          <p class="text-sm text-gray-700">Banks offer mobile apps and USSD access; use them to keep family accounts transparent and to apply for small business loans.</p>
-          <div class="mt-2 text-sm"><a href="https://www.nmbbank.co.tz" class="underline">NMB</a> • <a href="https://www.crdbbank.co.tz" class="underline">CRDB</a></div>
+
+        <div class="bg-white rounded shadow p-4 flex items-start gap-3">
+          <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#0ea5a4"/><path d="M8 12h8" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <div class="font-bold">NMB Mobile</div>
+            <div class="text-sm text-gray-700">Benki ya Tanzania inayo huduma za pesa kielektroniki na mikopo ya biashara ndogo.</div>
+            <a class="text-sm underline mt-2 inline-block" href="https://www.nmbbank.co.tz">Tovuti ya NMB</a>
+          </div>
         </div>
-        <div class="bg-white p-4 rounded shadow">
-          <h4 class="font-bold">Agent Networks & Cash-In/Cash-Out</h4>
-          <p class="text-sm text-gray-700">Use agent networks to deposit or withdraw cash; this links physical money to mobile accounts for businesses and households.</p>
+
+        <div class="bg-white rounded shadow p-4 flex items-start gap-3">
+          <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#1e293b"/><path d="M7 12h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <div class="font-bold">CRDB Mobile</div>
+            <div class="text-sm text-gray-700">Huduma za akaunti, malipo, na mikopo kwa wateja wa CRDB.</div>
+            <a class="text-sm underline mt-2 inline-block" href="https://www.crdbbank.co.tz">Tovuti ya CRDB</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded shadow p-4 flex items-start gap-3">
+          <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#2563eb"/><path d="M7 12h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <div class="font-bold">Stanbic Mobile</div>
+            <div class="text-sm text-gray-700">Huduma za benki za kibiashara, kadi, na ufadhili.</div>
+            <a class="text-sm underline mt-2 inline-block" href="https://www.stanbicbank.co.tz">Tovuti ya Stanbic</a>
+          </div>
+        </div>
+
+        <div class="bg-white rounded shadow p-4 flex items-start gap-3">
+          <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#ef4444"/><path d="M7 12h10" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div>
+            <div class="font-bold">Equity Mobile</div>
+            <div class="text-sm text-gray-700">Huduma za benki mtandaoni zinazounga mkono wajasiriamali.</div>
+            <a class="text-sm underline mt-2 inline-block" href="https://www.equitybankgroup.com">Tovuti ya Equity</a>
+          </div>
         </div>
       </div>
 
-      <p class="text-xs text-gray-500 mt-3">Always verify security and transaction fees before using any financial service.</p>
+      <p class="text-xs text-gray-500 mt-3">Viungo vimewekwa kwa ajili ya mwonekano. Fuata taratibu za usalama kabla ya kuingia kwenye huduma za kifedha mtandaoni.</p>
     </section>
 
-    <!-- Call to action -->
+    <!-- CTA for starting with Mria -->
     <section class="mb-10 p-6 bg-white rounded shadow text-center">
-      <h4 class="text-xl font-bold">Ready to Start?</h4>
-      <p class="text-gray-700 mb-4">Get a simple family investment plan — send us an email or download the starter checklist.</p>
-      <div class="flex items-center justify-center gap-3">
-        <a href="mailto:hello@mria.example" class="px-5 py-2 bg-sky-600 text-white rounded">Email Us</a>
-        <a href="#" class="px-5 py-2 border border-sky-600 text-sky-600 rounded">Download Checklist (PDF)</a>
-      </div>
+      <h4 class="text-xl font-bold">Anza Safari ya Uwekezaji ya Familia Yako</h4>
+      <p class="text-gray-700 mb-4">Jiunge na Mria au upokee msaada wa kujenga mpango wa mradi wa familia yako.</p>
+      <a id="contact" href="mailto:hello@mria.example" class="px-5 py-2 bg-blue-600 text-white rounded">Tuma Barua</a>
     </section>
 
     <footer class="text-center text-sm text-gray-600 py-6">
-      <div>Mria &copy; <span id="year"></span>. Empowering family investments.</div>
+      <div>Mria &copy; <span id="year"></span>. Hakimiliki yote ni mali ya Mria.</div>
       <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
     </footer>
   </main>
 
-  <script src="https://cdn.jsdelivr.net/npm/lightbox2@2/dist/js/lightbox.min.js"></script>
+  <script>
+    // Simple: Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const id = this.getAttribute('href');
+        if (id === '#') return;
+        const el = document.querySelector(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      })
+    })
+  </script>
 </body>
 </html>
+
