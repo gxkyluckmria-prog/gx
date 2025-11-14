@@ -160,34 +160,62 @@
             </div>
         </div>
 
-        <h2>Contact the Investor</h2>
-        <form id="contactForm">
-            <input type="text" id="name" placeholder="Your Name" required>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <textarea id="message" rows="5" placeholder="Your Message" required></textarea>
-            <button type="submit">Send Message</button>
-            <div class="message" id="formMessage"></div>
-        </form>
+  <!-- Login Box -->
+  <div class="box" id="loginBox">
+    <h2>Admin Login</h2>
+    <input type="text" id="username" placeholder="Username"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="login()">Login</button>
+    <p id="error" style="color:red;"></p>
+  </div>
+
+  <!-- Admin Panel -->
+  <div class="box hidden" id="adminPanel">
+    <h2>Admin Panel</h2>
+    <input type="text" id="dataInput" placeholder="Enter data"><br>
+    <button onclick="sendData()">Send Data</button>
+    <div class="link-box">
+      <a href="https://example.com" target="_blank">Restricted Link</a>
     </div>
+    <button style="margin-top:10px;" onclick="logout()">Logout</button>
+  </div>
 
-    <script>
-        const form = document.getElementById('contactForm');
-        const formMessage = document.getElementById('formMessage');
+  <script>
+    // Hardcoded credentials
+    const adminUsername = "admin";
+    const adminPassword = "mamele123";
 
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-            
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      const error = document.getElementById("error");
 
-            // For demo: Just show a confirmation message
-            formMessage.textContent = `Thank you, ${name}! Your message has been sent to the investor.`;
+      if (username === adminUsername && password === adminPassword) {
+        document.getElementById("loginBox").classList.add("hidden");
+        document.getElementById("adminPanel").classList.remove("hidden");
+        error.textContent = "";
+      } else {
+        error.textContent = "Invalid username or password!";
+      }
+    }
 
-            // Clear form
-            form.reset();
-        });
-    </script>
+    function sendData() {
+      const data = document.getElementById("dataInput").value;
+      if (data) {
+        alert("Data sent: " + data);
+        document.getElementById("dataInput").value = "";
+      } else {
+        alert("Please enter some data.");
+      }
+    }
+
+    function logout() {
+      document.getElementById("adminPanel").classList.add("hidden");
+      document.getElementById("loginBox").classList.remove("hidden");
+    }
+  </script>
+
 </body>
 </html>
 
+      
