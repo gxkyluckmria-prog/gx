@@ -51,100 +51,199 @@
         input[type="number"], input[type="text"], input[type="date"] { width: 98%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px; }
         button { background-color: #4CAF50; color: white; padding: 10px 15px; border: none; border-radius: 4px; cursor: pointer; width: 100%; margin-top: 5px;}
         button:hover { background-color: #45a049; }
-    </style>
+
+body { font-family: Arial, sans-serif; background: #f0f4f8; display: flex; justify-content: center; padding: 50px 0; }
+.container { background: #fff; padding: 25px 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); width: 400px; }
+h2 { text-align: center; margin-bottom: 20px; color: #333; }
+input, select { width: 100%; padding: 10px; margin: 8px 0; border-radius: 6px; border: 1px solid #ccc; font-size: 16px; }
+button { width: 100%; padding: 12px; margin-top: 10px; border: none; border-radius: 6px; background-color: #007bff; color: #fff; font-size: 16px; cursor: pointer; }
+button:hover { background-color: #0056b3; }
+.message { text-align: center; margin-top: 10px; font-weight: bold; }
+.message.success { color: green; }
+.message.error { color: red; }
+.history { margin-top: 20px; border-top: 1px solid #ccc; padding-top: 15px; }
+.history h3 { text-align: center; margin-bottom: 10px; }
+.history-item { background: #f9f9f9; margin: 5px 0; padding: 8px 10px; border-radius: 5px; font-size: 14px; }
+.btn-small { background-color: #28a745; margin-top: 5px; font-size: 14px; }
+.btn-small:hover { background-color: #218838; }
+.link { text-align: center; margin-top: 10px; }
+.link a { cursor: pointer; color: #007bff; text-decoration: underline; }
+</style>
 </head>
 <body>
 
-<div class="container">
-    <h1>FEDHA UKOO</h1>
-    
-    <div class="input-group">
-        <h2>Ingiza Rekodi ya Pesa Kila Siku 💰</h2>
-        <form id="moneyForm"action="https://gx-tan.vercel.app/FEDHA%20UKOO.xlsx">
-            <label for="amount">Kiasi cha Pesa (TZS):</label>
-            <input type="number" name="entry.1234567890" id="amount" placeholder="Mfano: 50000" required>
-            
-            <label for="date">Tarehe:</label>
-            <input type="date" name="entry.0987654321" id="date" value="" required>
+<div class="container" id="userView">
+  <h2>Tuma Hela kwa Admini</h2>
+  <p style="text-align:center;">Namba ya Admini: <strong>0759200446</strong> (Emmanuel Mria)</p>
 
-            <label for="recordedBy">Jina la Mrekodi:</label>
-            <input type="text" name="entry.1122334455" id="recordedBy" placeholder="Mfano: Juma Mchaga" required>
+  <input type="text" id="userName" placeholder="Jina lako" required>
+  <input type="number" id="amount" placeholder="Kiasi cha pesa (TZS)" required>
+  <select id="paymentMethod">
+    <option value="">Chagua njia ya malipo</option>
+    <option value="M-Pesa">M-Pesa</option>
+    <option value="Tigo Pesa">Tigo Pesa</option>
+    <option value="Airtel Money">Airtel Money</option>
+  </select>
+  <button onclick="sendMoney()">Tuma Hela</button>
+  <p id="message" class="message"></p>
 
-            <button type="submit">Rekodi Pesa Kwenye Google Sheet</button>
-        </form>
+  <div class="history">
+    <h3>Historia ya Malipo</h3>
+    <div id="historyList">
+      <p style="text-align:center;color:#555;">Hakuna malipo bado.</p>
     </div>
+  </div>
+  <div class="link">
+    <a onclick="showAdminLogin()">Ingia kama Admini</a>
+  </div>
+</div>
 
-    <div class="input-group">
-        <h2>Rekodi Mtu Ambaye Hajarekodi ❌</h2>
-        <form id="nonRecorderForm">
-            <label for="nonRecorderName">Jina la Mtu:</label>
-            <input type="text" name="entry.9988776655" id="nonRecorderName" placeholder="Mfano: Maria Kilanga" required>
-            <button type="submit">Rekodi Jina Kwenye Google Sheet</button>
-        </form>
+<div class="container" id="adminLoginView" style="display:none;">
+  <h2>Admin Login</h2>
+  <input type="password" id="adminPassword" placeholder="Ingiza password">
+  <button onclick="adminLogin()">Ingia</button>
+  <p id="adminMessage" class="message"></p>
+  <div class="link">
+    <a onclick="showUserView()">Rudi kwa User</a>
+  </div>
+</div>
+
+<div class="container" id="adminPanelView" style="display:none;">
+  <h2>Admin Panel</h2>
+  <div class="history" id="adminHistory">
+    <h3>History ya Malipo Yote</h3>
+    <div id="adminHistoryList">
+      <p style="text-align:center;color:#555;">Hakuna malipo bado.</p>
     </div>
-
-    <hr>
-    <h2>Angalia Data Kwenye Google Sheet</h2>
-    <p>Data yote hupatikana na kusomwa moja kwa moja kutoka kwenye Karatasi yako ya Google.</p>
-    <a href="https://gx-tan.vercel.app/FEDHA%20UKOO.xlsx" target="_blank">Bofya Hapa Kufungua Google Sheet</a>
+  </div>
+  <button onclick="logoutAdmin()">Logout</button>
 </div>
 
 <script>
-    // ⚠️ BADILISHA HIZI URL NA LINKI HALISI ULIZOPATA KUTOKA KWENYE FORM
-    
-    const MONEY_FORM_URL = "https://docs.google.com/forms/d/e/XXXXXXXXXX/formResponse"; 
-    const NON_RECORDER_FORM_URL = "https://docs.google.com/forms/d/e/YYYYYYYYYY/formResponse";
+const ADMIN_PASSWORD = "mamele123";
+const ADMIN_NUMBER = "0759200446";
+let history = JSON.parse(localStorage.getItem('paymentHistory')) || [];
 
-    // Kazi ya kutuma data kwa Google Form
-    function submitFormData(form, formUrl) {
-        const formData = new FormData(form);
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
-        });
+const paymentLinks = {
+  "M-Pesa": `https://www.safaricom.co.tz/personal/m-pesa/send-money?recipient=${ADMIN_NUMBER}`,
+  "Tigo Pesa": `https://www.tigo.co.tz/tigo-pesa/send-money?recipient=${ADMIN_NUMBER}`,
+  "Airtel Money": `https://www.airtel.co.tz/money/send-money?recipient=${ADMIN_NUMBER}`
+};
 
-        // Tumia JQuery AJAX request
-        $.ajax({
-            url: formUrl,
-            data: data,
-            type: "POST",
-            // Kuongeza 'dataType: "xml"' na 'statusCode' kunaepusha ukurasa kufungua
-            // ukurasa wa asili wa 'Thank you' wa Google Form.
-            dataType: "xml", 
-            statusCode: {
-                0: function() {
-                    alert("Asante! Rekodi imetumwa kwenye Google Sheet.");
-                },
-                200: function() {
-                    alert("Kuna tatizo dogo la mtandao, lakini data huenda imepokelewa. Tafadhali angalia Google Sheet.");
-                }
-            }
-        });
-    }
+function sendMoney() {
+  const name = document.getElementById("userName").value.trim();
+  const amount = document.getElementById("amount").value.trim();
+  const method = document.getElementById("paymentMethod").value;
+  const message = document.getElementById("message");
 
-    // Listener kwa form ya Pesa
-    document.getElementById('moneyForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        submitFormData(this, MONEY_FORM_URL);
-        this.reset();
-        document.getElementById('date').valueAsDate = new Date(); // Rudisha tarehe ya leo
-    });
+  message.className = "message";
+  message.textContent = "";
 
-    // Listener kwa form ya Wasiorekodi
-    document.getElementById('nonRecorderForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        submitFormData(this, NON_RECORDER_FORM_URL);
-        this.reset();
-    });
+  if (!name || !amount || !method) {
+    message.className = "message error";
+    message.textContent = "Tafadhali jaza taarifa zote.";
+    return;
+  }
+  if (isNaN(amount) || Number(amount) <= 0) {
+    message.className = "message error";
+    message.textContent = "Tafadhali ingiza kiasi sahihi cha pesa.";
+    return;
+  }
 
-    // Weka tarehe ya leo kiotomatiki
-    document.getElementById('date').valueAsDate = new Date();
+  const payment = { name, amount: Number(amount), method, time: new Date().toLocaleString() };
+  history.push(payment);
+  localStorage.setItem('paymentHistory', JSON.stringify(history));
 
+  message.className = "message success";
+  message.innerHTML = `Asante ${name}! Kiasi cha TZS ${amount}kitatumwa kwa nenda kakamilishe malipo kwenye tovut ya mtandao wako (Emmanuel Mria). <br> 
+  <a href="${paymentLinks[method]}" target="_blank">Endelea na malipo kwenye ${method}</a>`;
+
+  document.getElementById("userName").value = "";
+  document.getElementById("amount").value = "";
+  document.getElementById("paymentMethod").value = "";
+
+  updateUserHistory();
+}
+
+function updateUserHistory() {
+  const list = document.getElementById("historyList");
+  if (history.length === 0) {
+    list.innerHTML = `<p style="text-align:center;color:#555;">Hakuna malipo bado.</p>`;
+    return;
+  }
+  list.innerHTML = "";
+  history.slice().reverse().forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className = "history-item";
+    div.innerHTML = `
+      <strong>${item.name}</strong> alituma TZS ${item.amount} (${item.method}) <br>
+      <small>${item.time}</small><br>
+      <button class="btn-small" onclick="sendAgain(${history.length - 1 - index})">Tuma Tena</button>
+    `;
+    list.appendChild(div);
+  });
+}
+
+function sendAgain(index) {
+  const item = history[index];
+  document.getElementById("userName").value = item.name;
+  document.getElementById("amount").value = item.amount;
+  document.getElementById("paymentMethod").value = item.method;
+  document.getElementById("message").className = "message";
+  document.getElementById("message").textContent = "Tumeweka taarifa za malipo yako hapa. Bonyeza 'Tuma Hela' kutuma tena.";
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function showAdminLogin() {
+  document.getElementById("userView").style.display = "none";
+  document.getElementById("adminLoginView").style.display = "block";
+}
+
+function showUserView() {
+  document.getElementById("adminLoginView").style.display = "none";
+  document.getElementById("adminPanelView").style.display = "none";
+  document.getElementById("userView").style.display = "block";
+}
+
+function adminLogin() {
+  const pwd = document.getElementById("adminPassword").value;
+  const message = document.getElementById("adminMessage");
+  if (pwd === ADMIN_PASSWORD) {
+    document.getElementById("adminLoginView").style.display = "none";
+    document.getElementById("adminPanelView").style.display = "block";
+    message.textContent = "";
+    updateAdminHistory();
+  } else {
+    message.className = "message error";
+    message.textContent = "Password si sahihi.";
+  }
+}
+
+function logoutAdmin() {
+  document.getElementById("adminPanelView").style.display = "none";
+  document.getElementById("adminLoginView").style.display = "block";
+}
+
+function updateAdminHistory() {
+  const list = document.getElementById("adminHistoryList");
+  if (history.length === 0) {
+    list.innerHTML = `<p style="text-align:center;color:#555;">Hakuna malipo bado.</p>`;
+    return;
+  }
+  list.innerHTML = "";
+  history.slice().reverse().forEach(item => {
+    const div = document.createElement("div");
+    div.className = "history-item";
+    div.innerHTML = `<strong>${item.name}</strong> alituma TZS ${item.amount} (${item.method}) <br><small>${item.time}</small>`;
+    list.appendChild(div);
+  });
+}
+
+updateUserHistory();
 </script>
 
 </body>
 </html>
-
 
 
 
