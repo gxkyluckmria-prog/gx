@@ -155,7 +155,7 @@ function sendMoney() {
   localStorage.setItem('paymentHistory', JSON.stringify(history));
 
   message.className = "message success";
-  message.innerHTML = `Asante ${name}! Kiasi cha TZS ${amount}kitatumwa kwa nenda kakamilishe malipo kwenye tovut ya mtandao wako (Emmanuel Mria). <br> 
+  message.innerHTML = `Asante ${name}! Kiasi cha TZS ${amount}kitatumwa kwa (Emmanuel Mria) iwapo utakamalisha malipo kwenye tovuti. <br> 
   <a href="${paymentLinks[method]}" target="_blank">Endelea na malipo kwenye ${method}</a>`;
 
   document.getElementById("userName").value = "";
@@ -244,6 +244,7 @@ updateUserHistory();
 
 </body>
 </html>
+
 
 
 
